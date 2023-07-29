@@ -43,6 +43,11 @@ import user from '../assests/images/formimage.png'
 import github from '../assests/images/github.png'
 import linkedin from "../assests/images/linkedIn.png"
 import email from "../assests/images/email.png"
+import setLocalStorage from '../composables/storage'
+definePageMeta({
+    middleware: ["auth"]
+    // or middleware: 'auth'
+})
 
 const userNameref = ref('')
 const userPasswordref = ref('')
@@ -59,7 +64,7 @@ async function signup() {
         checkUserPasswordref.value === ''
     ) {
         return console.log('One or more fields are empty');
-    } 
+    }
 
 
 
@@ -84,11 +89,25 @@ async function signup() {
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log(data)
+        authorizer(data)
     } catch (error) {
         console.error(error);
     }
+    async function authorizer(data) {
+        // Save the JWT token to cookies
+
+        document.cookie = `token=${data.token}; path=/;`
+        await setLocalStorage(data.data)
+
+        // Redirect to the home page
+        if (data.message == 'signedUp' || data.status == 200) {
+            window.location.href = '/profile'
+        }
+    }
+
 }
+
 
 
 

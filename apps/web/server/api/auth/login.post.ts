@@ -1,4 +1,5 @@
 import { userCollection, GetData } from "~/server/utils/firebase";
+import { decodeCookie } from "~/server/controllers/decodeJWT";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -19,7 +20,6 @@ export default defineEventHandler(async (event) => {
   }
 
   let user = GetData(document);
-  console.log(user);
 
   if (user.password) {
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -36,6 +36,11 @@ export default defineEventHandler(async (event) => {
       return { message: "Check you email or password", token: null };
     }
   }
-
-  return { message: "Logged In ", token: token };
+  let data = await decodeCookie(token);
+  return {
+    message: "loggedIn",
+    token: token,
+    status: 200,
+    data: data,
+  };
 });

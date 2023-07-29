@@ -1,6 +1,7 @@
 import { userCollection } from "~/server/utils/firebase";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { decodeCookie } from "~/server/controllers/decodeJWT";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
@@ -20,11 +21,12 @@ export default defineEventHandler(async (event) => {
     password: hashedpassword,
     createdAt: new Date(),
   };
-  console.log(data);
+
+  //> require('crypto').randomBytes(64).toString('hex')
 
   return document
     .create(data)
-    .then(() => {
+    .then(async () => {
       const token = jwt.sign(
         {
           email: email,
@@ -34,7 +36,9 @@ export default defineEventHandler(async (event) => {
         KEY
       );
       // console.log(token);
-      return { status: 200, data: token };
+      let data = await decodeCookie(token);
+
+      return { message: "signedUp", status: 200, token: token, data: data };
     })
     .catch((error) => {
       // console.log(error);
