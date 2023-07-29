@@ -14,6 +14,9 @@ importers:
       '@release-it/conventional-changelog':
         specifier: ^5.1.1
         version: 5.1.1(release-it@15.10.3)
+      '@types/jsonwebtoken':
+        specifier: ^9.0.2
+        version: 9.0.2
       release-it:
         specifier: ^15.10.3
         version: 15.10.3
@@ -71,7 +74,7 @@ importers:
         version: 8.41.0
       eslint-config-turbo:
         specifier: latest
-        version: 1.10.6(eslint@8.41.0)
+        version: 1.10.5(eslint@8.41.0)
     devDependencies:
       typescript:
         specifier: ^4.9.5
@@ -2540,7 +2543,6 @@ packages:
     resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
     dependencies:
       '@types/node': 18.11.9
-    dev: false
 
   /@types/linkify-it@3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
@@ -5237,13 +5239,13 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /eslint-config-turbo@1.10.6(eslint@8.41.0):
-    resolution: {integrity: sha512-iZ63etePRUdEIDY5MxdUhU2ekV9TDbVdHg0BK00QqVFgQTXUYuJ7rsQj/wUKTsw3jwhbLfaY6H5sknAgYyWZ2g==}
+  /eslint-config-turbo@1.10.5(eslint@8.41.0):
+    resolution: {integrity: sha512-n2jtsaTG18TpkHJG4TTNUMpBhP2otcCH2S8RxdKonGwoTPKBPG46kbdLvY25G6V1xempClY8f+CujcgV5LkbRw==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
       eslint: 8.41.0
-      eslint-plugin-turbo: 1.10.6(eslint@8.41.0)
+      eslint-plugin-turbo: 1.10.5(eslint@8.41.0)
     dev: false
 
   /eslint-import-resolver-node@0.3.7:
@@ -5432,8 +5434,8 @@ packages:
       eslint: 8.41.0
     dev: false
 
-  /eslint-plugin-turbo@1.10.6(eslint@8.41.0):
-    resolution: {integrity: sha512-jlzfxYaK8hcz1DTk8Glxxi1r0kgdy85191a4CbFOTiiBulmKHMLJgzhsyE9Ong796MA62n91KFpc20BiKjlHwg==}
+  /eslint-plugin-turbo@1.10.5(eslint@8.41.0):
+    resolution: {integrity: sha512-6E4bwsLp065bN1lMgHnhwNhIk8T1LQhYrpe4NnP2/lQgMDP89bxKjoJhAPzQ5v2+c9gj7M/jVltlC/Gnr/sz1Q==}
     peerDependencies:
       eslint: '>6.6.0'
     dependencies:
